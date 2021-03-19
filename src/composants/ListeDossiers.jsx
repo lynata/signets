@@ -4,8 +4,8 @@ import Dossier from './Dossier';
 import {instanceFirestore} from '../firebase';
 import { useEffect, useState } from 'react';
 
-export default function ListeDossiers(utilisateur) {
-  let [dossiers, setDossiers] = useState([]);
+export default function ListeDossiers({utilisateur, etatDossiers}) {
+  const [dossiers, setDossiers] = etatDossiers;
 
   useEffect(
     () => {
@@ -26,7 +26,7 @@ export default function ListeDossiers(utilisateur) {
       }
       // Faut pas oublier d'appeler la fonction
       chercherDossiers();
-    },[]
+    },[] //useeffect execute une seule fois
   );
   
   return (
